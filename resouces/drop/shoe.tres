@@ -1,0 +1,31 @@
+[gd_resource type="Resource" script_class="EquipDrop" load_steps=3 format=3 uid="uid://7lrhcw6ke637"]
+
+[ext_resource type="Script" uid="uid://bg6ops37k3722" path="res://resouces/drop/equip_drop.gd" id="1_kw670"]
+[ext_resource type="Texture2D" uid="uid://nr4i3tqbgbco" path="res://assets/equip/shoe.png" id="2_kw670"]
+
+[resource]
+script = ExtResource("1_kw670")
+equip_type = 1
+base_attack = 0
+base_defense = 2
+base_health = 0
+base_speed = 0
+attack_growth = 1.1
+defense_growth = 1.08
+health_growth = 1.15
+speed_growth = 1.05
+rarity = 0
+level = 1
+calculated_attack = 0
+calculated_defense = 0
+calculated_health = 0
+calculated_speed = 0
+bonus_attributes = Array[Dictionary]([])
+id = "shoe"
+name = "靴子"
+type = 1
+description = "可提升防御力的靴子"
+max_stack = 1
+quantity = 1
+scene_path = "uid://5p221rl5l6xb"
+texture = ExtResource("2_kw670")

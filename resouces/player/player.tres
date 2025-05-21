@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="Player" load_steps=3 format=3 uid="uid://dph2lhjvorw1o"]
+
+[ext_resource type="Script" uid="uid://6ry7vkrs5mpj" path="res://resouces/drop/basic_drop.gd" id="1_8m6gu"]
+[ext_resource type="Script" uid="uid://nau6tmugobk7" path="res://resouces/player/player.gd" id="2_stda4"]
+
+[resource]
+script = ExtResource("2_stda4")
+name = "无名"
+age = 18
+sex = "男"
+level = 1
+items = Array[ExtResource("1_8m6gu")]([])
+equip_slots = {
+"chest": [0, null],
+"feet": [1, null],
+"head": [2, null],
+"necklace": [3, null],
+"ring1": [4, null],
+"ring2": [4, null],
+"ring3": [4, null],
+"weapon": [5, null]
+}
+equip_health = 0
+equip_attack = 0
+equip_defense = 0
+"生命值" = 100
+"攻击力" = 8
+"防御力" = 2
+"每秒回复" = 1
+"经验" = 0
+base_health = 100
+base_attack = 8
+base_defense = 2
+base_regen = 1
+health_growth = 1.1
+attack_growth = 1.1
+defense_growth = 1.1
+regen_growth = 1.05
+exp_base = 100
+exp_growth = 2.0

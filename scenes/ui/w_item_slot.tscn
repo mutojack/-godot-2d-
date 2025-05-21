@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bavjflq6jy301"]
+
+[ext_resource type="Script" uid="uid://dn16m8s7mdub7" path="res://scenes/ui/w_item_slot.gd" id="1_hm1qr"]
+[ext_resource type="Texture2D" uid="uid://c3hnsj7vi6q8s" path="res://assets/ui/inventorySlot.png" id="1_nie1g"]
+[ext_resource type="PackedScene" uid="uid://dpvc82u8s2xx1" path="res://scenes/ui/w_item_tile.tscn" id="3_hm1qr"]
+
+[node name="w_item_slot" type="MarginContainer"]
+custom_minimum_size = Vector2(64, 64)
+mouse_filter = 0
+script = ExtResource("1_hm1qr")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 2
+mouse_filter = 1
+texture = ExtResource("1_nie1g")
+region_rect = Rect2(-1, 19, 22, 22)
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="w_item_tile" parent="." instance=ExtResource("3_hm1qr")]
+layout_mode = 2

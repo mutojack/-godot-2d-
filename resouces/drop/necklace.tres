@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EquipDrop" load_steps=3 format=3 uid="uid://dpaocndeycr5e"]
+
+[ext_resource type="Script" uid="uid://bg6ops37k3722" path="res://resouces/drop/equip_drop.gd" id="1_nq7xr"]
+[ext_resource type="Texture2D" uid="uid://o5gev74e8uwr" path="res://assets/equip/necklace.png" id="2_nq7xr"]
+
+[resource]
+script = ExtResource("1_nq7xr")
+equip_type = 3
+base_attack = 2
+base_defense = 2
+base_health = 10
+base_speed = 0
+attack_growth = 1.1
+defense_growth = 1.08
+health_growth = 1.15
+speed_growth = 1.05
+rarity = 0
+level = 1
+id = "necklace"
+name = "项链"
+type = 1
+description = "幸运的产物，可提升全属性"
+max_stack = 1
+quantity = 1
+scene_path = "uid://dc2fcxpeorr8m"
+texture = ExtResource("2_nq7xr")

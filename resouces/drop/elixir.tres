@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="BasicDrop" load_steps=3 format=3 uid="uid://vcdas78q78vn"]
+
+[ext_resource type="Script" uid="uid://6ry7vkrs5mpj" path="res://resouces/drop/basic_drop.gd" id="1_k7v8l"]
+[ext_resource type="Texture2D" uid="uid://bqftohl1kntfm" path="res://assets/icon/丹药.png" id="2_8dk33"]
+
+[resource]
+script = ExtResource("1_k7v8l")
+id = "elixir"
+name = "丹药"
+type = 2
+description = "此丹可增加一千点经验"
+max_stack = 9999
+quantity = 1
+scene_path = "uid://c4jd8f4f3ha7r"
+texture = ExtResource("2_8dk33")

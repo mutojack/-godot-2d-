@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmhl5lkibntja"]
+
+[ext_resource type="Script" uid="uid://btvk0dlfb3amo" path="res://scenes/ability/fire_ball_ability_controller/fire_ball_ability_controller.gd" id="1_hqarw"]
+[ext_resource type="PackedScene" uid="uid://bm7fvksexhc2s" path="res://scenes/ability/fire_ball_ability/fire_ball_ability.tscn" id="2_ytycj"]
+
+[node name="FireBallAbilityController" type="Node"]
+script = ExtResource("1_hqarw")
+fire_ball_ability = ExtResource("2_ytycj")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://6qxhy1sg8plw"]
+
+[sub_resource type="GDScript" id="GDScript_vebit"]
+
+[node name="RemoteAttackDistanceComponent" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = SubResource("GDScript_vebit")

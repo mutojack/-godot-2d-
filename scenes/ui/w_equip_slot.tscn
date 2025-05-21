@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://csdap3pqjxc8t"]
+
+[ext_resource type="PackedScene" uid="uid://bavjflq6jy301" path="res://scenes/ui/w_item_slot.tscn" id="1_lk6w0"]
+[ext_resource type="Script" uid="uid://2pbiq6hsa6e3" path="res://scenes/ui/w_equip_slot.gd" id="2_ou1ou"]
+
+[node name="w_equip_slot" groups=["equip_slot_widget"] instance=ExtResource("1_lk6w0")]
+script = ExtResource("2_ou1ou")
+equip_slot_name = &""
+equip_type = 0
+
+[node name="NinePatchRect" parent="." index="0"]
+region_rect = Rect2(-1, -1, 22, 22)
+
+[node name="Label" type="Label" parent="." index="2"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "头盔"

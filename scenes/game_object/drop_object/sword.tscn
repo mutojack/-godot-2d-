@@ -1,0 +1,35 @@
+[gd_scene load_steps=11 format=3 uid="uid://cl7tox5rtt4wb"]
+
+[ext_resource type="Script" uid="uid://btr206fvi0e1m" path="res://scenes/game_object/drop_object/blue_vial.gd" id="1_wqaq1"]
+[ext_resource type="Resource" uid="uid://dya26buei8jke" path="res://resouces/drop/sword.tres" id="2_lfwmw"]
+[ext_resource type="PackedScene" uid="uid://ytrxpsb6vni3" path="res://scenes/component/random_stream_player_2d_component.tscn" id="2_x0gg7"]
+[ext_resource type="AudioStream" uid="uid://k1cjk56propi" path="res://assets/audio/impactGeneric_light_000.ogg" id="3_lfwmw"]
+[ext_resource type="AudioStream" uid="uid://dfqqx41rjfv1c" path="res://assets/audio/impactGeneric_light_001.ogg" id="4_g3s86"]
+[ext_resource type="AudioStream" uid="uid://depbqc4hk6m3p" path="res://assets/audio/impactGeneric_light_002.ogg" id="5_lh2d5"]
+[ext_resource type="AudioStream" uid="uid://br3q6np10h70m" path="res://assets/audio/impactGeneric_light_003.ogg" id="6_dq1dw"]
+[ext_resource type="AudioStream" uid="uid://x5p53q7tkm6a" path="res://assets/audio/impactGeneric_light_004.ogg" id="7_55f88"]
+[ext_resource type="Texture2D" uid="uid://bd87hb3soa7gi" path="res://scenes/game_object/drop_object/sword.png" id="8_wqaq1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_jmuu1"]
+radius = 16.0
+
+[node name="Sword" type="Node2D"]
+script = ExtResource("1_wqaq1")
+item = ExtResource("2_lfwmw")
+
+[node name="ValidTimer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="RandomStreamPlayer2DComponent" parent="." instance=ExtResource("2_x0gg7")]
+streams = Array[AudioStream]([ExtResource("3_lfwmw"), ExtResource("4_g3s86"), ExtResource("5_lh2d5"), ExtResource("6_dq1dw"), ExtResource("7_55f88")])
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_jmuu1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("8_wqaq1")

@@ -1,0 +1,353 @@
+[gd_scene load_steps=31 format=3 uid="uid://f6x2226dy01d"]
+
+[ext_resource type="PackedScene" uid="uid://dbwidxmg0yvne" path="res://scenes/component/health_component.tscn" id="1_4jk3l"]
+[ext_resource type="Texture2D" uid="uid://dst4uqdxj2c83" path="res://scenes/game_object/wizard_enemy/wizard_enemy.png" id="1_43j36"]
+[ext_resource type="Script" uid="uid://b71j62yxof3bj" path="res://scenes/game_object/wizard_enemy/wizard_enemy.gd" id="1_qct4f"]
+[ext_resource type="PackedScene" uid="uid://dnjgogixtol0d" path="res://scenes/component/death_component.tscn" id="2_865ah"]
+[ext_resource type="PackedScene" uid="uid://bhpfr7ytikixu" path="res://scenes/component/velocity_component.tscn" id="3_qgqx6"]
+[ext_resource type="PackedScene" uid="uid://842ouwv1hn5b" path="res://scenes/component/hurtbox_component.tscn" id="4_865ah"]
+[ext_resource type="PackedScene" uid="uid://cbv44opsav143" path="res://scenes/component/drop_component.tscn" id="4_rquut"]
+[ext_resource type="PackedScene" uid="uid://c01jb0j2dgpfx" path="res://scenes/component/hit_flash_component.tscn" id="5_sjtyn"]
+[ext_resource type="PackedScene" uid="uid://bmhl5lkibntja" path="res://scenes/ability/fire_ball_ability_controller/fire_ball_ability_controller.tscn" id="6_vrtha"]
+[ext_resource type="PackedScene" uid="uid://dg58qc3oe0acc" path="res://scenes/ui/name_label.tscn" id="7_8twg8"]
+[ext_resource type="PackedScene" uid="uid://ytrxpsb6vni3" path="res://scenes/component/random_stream_player_2d_component.tscn" id="7_mrvcy"]
+[ext_resource type="AudioStream" uid="uid://c2umca8luix0d" path="res://assets/audio/footstep_carpet_000.ogg" id="8_4s742"]
+[ext_resource type="PackedScene" uid="uid://bp8o7m247ixj4" path="res://scenes/ui/health_bar.tscn" id="8_mk8uf"]
+[ext_resource type="AudioStream" uid="uid://c6luiboy4iwil" path="res://assets/audio/footstep_carpet_001.ogg" id="9_hcfsk"]
+[ext_resource type="AudioStream" uid="uid://d0i8qawuod7qb" path="res://assets/audio/footstep_carpet_002.ogg" id="10_vrtha"]
+[ext_resource type="AudioStream" uid="uid://ceny0djesi501" path="res://assets/audio/footstep_carpet_003.ogg" id="11_ka3t7"]
+[ext_resource type="AudioStream" uid="uid://bpocnm3q8iy2q" path="res://assets/audio/footstep_carpet_004.ogg" id="12_8twg8"]
+[ext_resource type="Texture2D" uid="uid://dkxff0i77x4ms" path="res://scenes/game_object/wizard_enemy/fazhang.png" id="14_4s742"]
+[ext_resource type="PackedScene" uid="uid://6qxhy1sg8plw" path="res://scenes/component/remote_attack_distance_component.tscn" id="16_hcfsk"]
+[ext_resource type="AudioStream" uid="uid://bthh0jlufgxps" path="res://assets/audio/fire.mp3" id="16_mk8uf"]
+
+[sub_resource type="Animation" id="Animation_sjtyn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Visuals/Weapon:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, -6)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Visuals/Weapon:skew")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rquut"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1.7411, 3.86374, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.261799]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 2.07053, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1.5, 0.8), Vector2(0.9, 1.1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0333333, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [true],
+"method": &"set_is_moving"
+}, {
+"args": [false],
+"method": &"set_is_moving"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_74qiw"]
+_data = {
+&"RESET": SubResource("Animation_sjtyn"),
+&"walk": SubResource("Animation_rquut")
+}
+
+[sub_resource type="Animation" id="Animation_mk8uf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(7, -6)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Weapon:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_8twg8"]
+resource_name = "remote_attack"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Weapon:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(7, -6), Vector2(7, -5), Vector2(7, -3)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Weapon:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.174533, 0.174533]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FireRandomStreamPlayer2DComponent")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_02quh"]
+_data = {
+&"RESET": SubResource("Animation_mk8uf"),
+&"remote_attack": SubResource("Animation_8twg8")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02quh"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qgqx6"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4jk3l"]
+radius = 6.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hcfsk"]
+radius = 150.0
+
+[node name="WizardEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 9
+script = ExtResource("1_qct4f")
+enemy_name = "火小巫师"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_74qiw")
+}
+autoplay = "walk"
+
+[node name="AttackAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_02quh")
+}
+
+[node name="HealthComponent" parent="." instance=ExtResource("1_4jk3l")]
+max_health = 30.0
+
+[node name="VelocityComponent" parent="." instance=ExtResource("3_qgqx6")]
+max_speed = 60
+acceleration = 20.0
+
+[node name="VialDropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_rquut")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("5_sjtyn")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="DropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_rquut")]
+health_component = NodePath("../HealthComponent")
+drop_table = Dictionary[int, int]({
+0: 9000,
+1: 500,
+2: 150,
+3: 150,
+4: 150,
+5: 150,
+6: 50,
+7: 500
+})
+drop_percent = 0.8
+
+[node name="FireBallAbilityController" parent="." instance=ExtResource("6_vrtha")]
+
+[node name="FireBallTimer" type="Timer" parent="FireBallAbilityController"]
+wait_time = 1.5
+one_shot = true
+
+[node name="NameLabel" parent="." instance=ExtResource("7_8twg8")]
+offset_top = -34.0
+offset_bottom = -20.0
+theme_override_colors/font_color = Color(0.909804, 0.270588, 0.215686, 1)
+theme_override_font_sizes/font_size = 10
+text = "硕鼠 Lv.30"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HealthBar" parent="." instance=ExtResource("8_mk8uf")]
+offset_top = -21.0
+offset_bottom = -15.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_02quh")
+value = 1.0
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("2_865ah")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="HitRandomAudioPlayer2DComponent" parent="." instance=ExtResource("7_mrvcy")]
+streams = Array[AudioStream]([ExtResource("8_4s742"), ExtResource("9_hcfsk"), ExtResource("10_vrtha"), ExtResource("11_ka3t7"), ExtResource("12_8twg8")])
+
+[node name="FireRandomStreamPlayer2DComponent" parent="." instance=ExtResource("7_mrvcy")]
+streams = Array[AudioStream]([ExtResource("16_mk8uf")])
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("1_43j36")
+offset = Vector2(0, -8)
+
+[node name="Weapon" type="Sprite2D" parent="Visuals"]
+position = Vector2(7, -6)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("14_4s742")
+
+[node name="Marker2D" type="Marker2D" parent="Visuals/Weapon"]
+position = Vector2(2, -10)
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_865ah")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+unique_name_in_owner = true
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_qgqx6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_4jk3l")
+
+[node name="RemoteAttackDistanceComponent" parent="." instance=ExtResource("16_hcfsk")]
+script = null
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RemoteAttackDistanceComponent"]
+visible = false
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_hcfsk")
+
+[connection signal="remote_attack" from="." to="." method="_on_remote_attack"]

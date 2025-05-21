@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://6stu0snrawsx"]
+
+[ext_resource type="Script" uid="uid://dfqqg24et5axo" path="res://scenes/ability/claw_ability_controller/claw_ability_controller.gd" id="1_jdowy"]
+[ext_resource type="PackedScene" uid="uid://bk7f1i4yxo0ej" path="res://scenes/ability/claw_ability/claw_ability.tscn" id="2_oihqp"]
+
+[node name="ClawAbilityController" type="Node"]
+script = ExtResource("1_jdowy")
+claw_ability = ExtResource("2_oihqp")

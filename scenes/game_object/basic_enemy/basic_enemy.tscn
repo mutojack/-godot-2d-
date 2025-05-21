@@ -1,0 +1,218 @@
+[gd_scene load_steps=28 format=3 uid="uid://b00l13xfiinde"]
+
+[ext_resource type="Texture2D" uid="uid://q0pjt36xd8jf" path="res://scenes/game_object/basic_enemy/basic_enemy.png" id="1_fng3e"]
+[ext_resource type="Script" uid="uid://cqiyb2pjnpg5y" path="res://scenes/game_object/basic_enemy/basic_enemy.gd" id="1_gxg7h"]
+[ext_resource type="PackedScene" uid="uid://dg58qc3oe0acc" path="res://scenes/ui/name_label.tscn" id="2_jimn8"]
+[ext_resource type="PackedScene" uid="uid://dbwidxmg0yvne" path="res://scenes/component/health_component.tscn" id="3_isd1k"]
+[ext_resource type="PackedScene" uid="uid://cbv44opsav143" path="res://scenes/component/drop_component.tscn" id="3_pcrk2"]
+[ext_resource type="PackedScene" uid="uid://bp8o7m247ixj4" path="res://scenes/ui/health_bar.tscn" id="3_qku51"]
+[ext_resource type="PackedScene" uid="uid://dnjgogixtol0d" path="res://scenes/component/death_component.tscn" id="4_bq7hi"]
+[ext_resource type="PackedScene" uid="uid://842ouwv1hn5b" path="res://scenes/component/hurtbox_component.tscn" id="4_elloc"]
+[ext_resource type="PackedScene" uid="uid://bhpfr7ytikixu" path="res://scenes/component/velocity_component.tscn" id="4_jkye5"]
+[ext_resource type="PackedScene" uid="uid://6stu0snrawsx" path="res://scenes/ability/claw_ability_controller/claw_ability_controller.tscn" id="5_ws2by"]
+[ext_resource type="PackedScene" uid="uid://c01jb0j2dgpfx" path="res://scenes/component/hit_flash_component.tscn" id="7_v58qd"]
+[ext_resource type="AudioStream" uid="uid://c2umca8luix0d" path="res://assets/audio/footstep_carpet_000.ogg" id="9_t4oqy"]
+[ext_resource type="PackedScene" uid="uid://ytrxpsb6vni3" path="res://scenes/component/random_stream_player_2d_component.tscn" id="10_yyp5f"]
+[ext_resource type="AudioStream" uid="uid://c6luiboy4iwil" path="res://assets/audio/footstep_carpet_001.ogg" id="11_j5o3q"]
+[ext_resource type="AudioStream" uid="uid://d0i8qawuod7qb" path="res://assets/audio/footstep_carpet_002.ogg" id="12_jimn8"]
+[ext_resource type="AudioStream" uid="uid://ceny0djesi501" path="res://assets/audio/footstep_carpet_003.ogg" id="13_qku51"]
+[ext_resource type="AudioStream" uid="uid://bpocnm3q8iy2q" path="res://assets/audio/footstep_carpet_004.ogg" id="14_ws2by"]
+
+[sub_resource type="Animation" id="Animation_bq7hi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_elloc"]
+resource_name = "walk"
+length = 0.4
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1, 0), Vector2(-1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.174533, -0.174533, 0.174533, -0.174533]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bq7hi"]
+_data = {
+&"RESET": SubResource("Animation_bq7hi"),
+&"walk": SubResource("Animation_elloc")
+}
+
+[sub_resource type="Animation" id="Animation_fcdwx"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_ws2by"]
+resource_name = "attack"
+length = 0.3
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.523599, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_fcdwx"]
+_data = {
+&"RESET": SubResource("Animation_fcdwx"),
+&"attack": SubResource("Animation_ws2by")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qku51"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.247059, 0.14902, 0.192157, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ws2by"]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_elloc"]
+radius = 12.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xrbw7"]
+radius = 6.0
+
+[node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 8
+collision_mask = 9
+motion_mode = 1
+script = ExtResource("1_gxg7h")
+enemy_name = "硕鼠"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_bq7hi")
+}
+
+[node name="AttackAnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_fcdwx")
+}
+
+[node name="NameLabel" parent="." instance=ExtResource("2_jimn8")]
+offset_top = -34.0
+offset_bottom = -20.0
+theme_override_colors/font_color = Color(0.909804, 0.270588, 0.215686, 1)
+theme_override_font_sizes/font_size = 10
+text = "硕鼠 Lv.30"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VelocityComponent" parent="." instance=ExtResource("4_jkye5")]
+max_speed = 100
+acceleration = 20.0
+
+[node name="HealthBar" parent="." instance=ExtResource("3_qku51")]
+offset_top = -21.0
+offset_bottom = -15.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_qku51")
+value = 1.0
+
+[node name="ClawAbilityController" parent="." instance=ExtResource("5_ws2by")]
+
+[node name="ClawCD" type="Timer" parent="ClawAbilityController"]
+unique_name_in_owner = true
+
+[node name="HealthComponent" parent="." instance=ExtResource("3_isd1k")]
+
+[node name="DropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_pcrk2")]
+health_component = NodePath("../HealthComponent")
+drop_table = Dictionary[int, int]({
+0: 9000,
+1: 500,
+2: 100,
+3: 100,
+4: 100,
+5: 100,
+6: 10
+})
+drop_percent = 1.0
+
+[node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_v58qd")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="DeathComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("4_bq7hi")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+
+[node name="HitRandomAudioPlayer2DComponent" parent="." instance=ExtResource("10_yyp5f")]
+streams = Array[AudioStream]([ExtResource("9_t4oqy"), ExtResource("11_j5o3q"), ExtResource("12_jimn8"), ExtResource("13_qku51"), ExtResource("14_ws2by")])
+
+[node name="AttackDistance" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackDistance"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_ws2by")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_elloc")]
+health_component = NodePath("../HealthComponent")
+
+[node name="HurtShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+unique_name_in_owner = true
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_elloc")
+
+[node name="Visuals" type="Node2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals"]
+texture = ExtResource("1_fng3e")
+offset = Vector2(0, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_xrbw7")

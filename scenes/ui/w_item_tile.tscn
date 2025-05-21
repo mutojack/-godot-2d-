@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://dpvc82u8s2xx1"]
+
+[ext_resource type="Script" uid="uid://dcgjfw3qcmepj" path="res://scenes/ui/w_item_tile.gd" id="1_o2a18"]
+
+[node name="w_item_tile" type="MarginContainer"]
+offset_right = 42.0
+offset_bottom = 42.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+tooltip_text = " "
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+script = ExtResource("1_o2a18")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+expand_mode = 1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_filter = 1
+theme_override_colors/font_outline_color = Color(0.247059, 0.14902, 0.192157, 1)
+theme_override_constants/outline_size = 5

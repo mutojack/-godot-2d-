@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="EquipDrop" load_steps=3 format=3 uid="uid://dya26buei8jke"]
+
+[ext_resource type="Script" uid="uid://bg6ops37k3722" path="res://resouces/drop/equip_drop.gd" id="1_ux5ir"]
+[ext_resource type="Texture2D" uid="uid://bd87hb3soa7gi" path="res://scenes/game_object/drop_object/sword.png" id="2_tkmxp"]
+
+[resource]
+script = ExtResource("1_ux5ir")
+equip_type = 5
+base_attack = 2
+base_defense = 0
+base_health = 0
+base_speed = 0
+attack_growth = 1.1
+defense_growth = 1.08
+health_growth = 1.15
+speed_growth = 1.05
+rarity = 0
+level = 1
+id = "sword"
+name = "剑"
+type = 1
+description = "尖锐的剑，剑仙的好伙伴"
+max_stack = 1
+quantity = 1
+scene_path = "uid://cl7tox5rtt4wb"
+texture = ExtResource("2_tkmxp")

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BasicDrop" load_steps=3 format=3 uid="uid://dffiddvwpk8w5"]
+
+[ext_resource type="Script" uid="uid://6ry7vkrs5mpj" path="res://resouces/drop/basic_drop.gd" id="1_rkjp4"]
+[ext_resource type="Texture2D" uid="uid://d0j3lqjjc8fro" path="res://scenes/game_object/drop_object/blue_vial.png" id="2_kw6l6"]
+
+[resource]
+script = ExtResource("1_rkjp4")
+id = "blue_vial"
+name = "净水"
+type = 3
+description = "炼丹的基础材料"
+max_stack = 9999
+quantity = 1
+scene_path = "uid://bq0dqowsbgfoh"
+texture = ExtResource("2_kw6l6")
+attributes = {}
