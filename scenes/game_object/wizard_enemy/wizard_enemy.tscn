@@ -274,7 +274,6 @@ sprite = NodePath("../Visuals/Sprite2D")
 [node name="DropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_rquut")]
 health_component = NodePath("../HealthComponent")
 drop_table = Dictionary[int, int]({
-0: 9000,
 1: 500,
 2: 150,
 3: 150,
@@ -283,7 +282,7 @@ drop_table = Dictionary[int, int]({
 6: 50,
 7: 500
 })
-drop_percent = 0.8
+drop_percent = 0.05
 
 [node name="FireBallAbilityController" parent="." instance=ExtResource("6_vrtha")]
 
@@ -311,9 +310,11 @@ health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="HitRandomAudioPlayer2DComponent" parent="." instance=ExtResource("7_mrvcy")]
+bus = &"sfx"
 streams = Array[AudioStream]([ExtResource("8_4s742"), ExtResource("9_hcfsk"), ExtResource("10_vrtha"), ExtResource("11_ka3t7"), ExtResource("12_8twg8")])
 
 [node name="FireRandomStreamPlayer2DComponent" parent="." instance=ExtResource("7_mrvcy")]
+bus = &"sfx"
 streams = Array[AudioStream]([ExtResource("16_mk8uf")])
 
 [node name="Visuals" type="Node2D" parent="."]

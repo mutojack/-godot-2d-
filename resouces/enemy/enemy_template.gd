@@ -60,17 +60,16 @@ func get_scaled_stats(level: int) -> Dictionary:
 	return scaled_stats
 
 
-func setup_scaled_enemy(level: int) -> void:
+func setup_scaled_enemy() -> void:
 	var scaled_stats = get_scaled_stats(level)
 	base_health = scaled_stats["max_health"]
 	base_attack = scaled_stats["attack"]
 	base_defense = scaled_stats["defense"]
 	base_exp = scaled_stats["exp_value"]
-	self.level = level
 
 
 # 普通敌人 (低血低攻)
-static func create_normal_enemy() -> EnemyTemplate:
+static func create_normal_enemy(level: int) -> EnemyTemplate:
 	var enemy = EnemyTemplate.new()
 	enemy.enemy_name = "普通敌人"
 	enemy.base_health = 100
@@ -78,10 +77,12 @@ static func create_normal_enemy() -> EnemyTemplate:
 	enemy.base_defense = 6
 	enemy.base_exp = 15
 	enemy.enemy_type = ENEMY_TYPE.NORMAL
+	enemy.level = level
+	enemy.setup_scaled_enemy()
 	return enemy
 
 # 精英敌人 (均衡型)
-static func create_elite_enemy() -> EnemyTemplate:
+static func create_elite_enemy(level: int) -> EnemyTemplate:
 	var enemy = EnemyTemplate.new()
 	enemy.enemy_name = "精英敌人"
 	enemy.base_health = 200
@@ -90,10 +91,12 @@ static func create_elite_enemy() -> EnemyTemplate:
 	enemy.base_exp = 40
 	enemy.enemy_type = ENEMY_TYPE.ELITE
 	enemy.health_revert = 1
+	enemy.level = level
+	enemy.setup_scaled_enemy()
 	return enemy
 
 # BOSS敌人 (高血高攻)
-static func create_boss_enemy() -> EnemyTemplate:
+static func create_boss_enemy(level: int) -> EnemyTemplate:
 	var enemy = EnemyTemplate.new()
 	enemy.enemy_name = "BOSS"
 	enemy.base_health = 500
@@ -102,6 +105,8 @@ static func create_boss_enemy() -> EnemyTemplate:
 	enemy.base_exp = 150
 	enemy.enemy_type = ENEMY_TYPE.BOSS
 	enemy.health_revert = 1
+	enemy.level = level
+	enemy.setup_scaled_enemy()
 	return enemy
 
 

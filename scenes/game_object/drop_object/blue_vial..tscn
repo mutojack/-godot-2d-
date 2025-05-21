@@ -23,6 +23,7 @@ one_shot = true
 autostart = true
 
 [node name="RandomStreamPlayer2DComponent" parent="." instance=ExtResource("2_04254")]
+bus = &"sfx"
 streams = Array[AudioStream]([ExtResource("3_yjmqd"), ExtResource("4_3utfc"), ExtResource("5_4iksb"), ExtResource("6_spmgr"), ExtResource("7_hksxq")])
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -3,11 +3,13 @@ extends MarginContainer
 @onready var attribute_label: Label = %AttributeLabel
 @onready var outline_label: Label = %OutlineLabel
 @onready var close_btn: Button = %CloseBtn
+@onready var collect_experience_btn: Button = %CollectExperienceBtn
 
 
 func _ready() -> void:
 	GameEvents.player_stats_changed.connect(_on_player_stats_changed)
 	close_btn.pressed.connect(_on_close_btn_pressed)
+	collect_experience_btn.pressed.connect(_on_collect_experience_btn_pressed)
 
 
 func fill_label_text(player_info: Player):
@@ -32,6 +34,10 @@ func fill_label_text(player_info: Player):
 	attribute_label.text = attribute_label_text
 	
 	var outline_label_text: String = ""	
+	if player_info.accumulate_sceconds >= 0:
+		outline_label_text += "离线挂机时长 %s\n" % GameUtils.seconds_to_hhmmss(player_info.accumulate_sceconds)
+		outline_label_text += "离线挂机经验 %s\n" % GameUtils.calc_outline_experience(player_info.accumulate_sceconds)
+	outline_label.text = outline_label_text
 
 
 func _on_player_stats_changed(player_info: Player):
@@ -40,3 +46,9 @@ func _on_player_stats_changed(player_info: Player):
 
 func _on_close_btn_pressed():
 	hide()
+
+
+func _on_collect_experience_btn_pressed():
+	GameUtils.emit_notify_experience_manager(GameUtils.calc_outline_experience(Global.player_info.accumulate_sceconds))
+	Global.player_info.accumulate_sceconds = 0
+	fill_label_text(Global.player_info)

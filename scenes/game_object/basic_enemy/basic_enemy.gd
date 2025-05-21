@@ -24,21 +24,17 @@ signal claw_attack(position: Vector2)
 var enemy_info: EnemyTemplate
 var is_moving: bool = true
 var is_stop_moving: bool = false
+var level: int = 1
 
 
 func _ready() -> void:
 	health_component.health_changed.connect(_on_health_changed)
 	$HurtboxComponent.hit.connect(on_hit)
-	enemy_info = EnemyTemplate.create_normal_enemy()
+	enemy_info = EnemyTemplate.create_normal_enemy(level)
 	enemy_info.enemy_name = enemy_name
 	attack_distance.area_entered.connect(_on_attack_distance_area_entered)
 	attack_distance.area_exited.connect(_on_attack_distance_area_exited)
 	claw_cd.timeout.connect(_on_claw_cd_timeout)
-	update_attributes()
-
-
-func set_level(level: int):
-	enemy_info.setup_scaled_enemy(level)
 	update_attributes()
 
 
@@ -89,7 +85,6 @@ func _on_attack_distance_area_entered(other_area: Area2D):
 	is_moving = false
 	$AnimationPlayer.play("RESET")
 	await $AnimationPlayer.animation_finished
-	await get_tree().create_timer(.4).timeout
 	_on_claw_cd_timeout()
 	claw_cd.start()
 

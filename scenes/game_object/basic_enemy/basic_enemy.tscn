@@ -169,7 +169,6 @@ unique_name_in_owner = true
 [node name="DropComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_pcrk2")]
 health_component = NodePath("../HealthComponent")
 drop_table = Dictionary[int, int]({
-0: 9000,
 1: 500,
 2: 100,
 3: 100,
@@ -177,7 +176,7 @@ drop_table = Dictionary[int, int]({
 5: 100,
 6: 10
 })
-drop_percent = 1.0
+drop_percent = 0.04
 
 [node name="HitFlashComponent" parent="." node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("7_v58qd")]
 health_component = NodePath("../HealthComponent")
@@ -188,6 +187,7 @@ health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
 
 [node name="HitRandomAudioPlayer2DComponent" parent="." instance=ExtResource("10_yyp5f")]
+bus = &"sfx"
 streams = Array[AudioStream]([ExtResource("9_t4oqy"), ExtResource("11_j5o3q"), ExtResource("12_jimn8"), ExtResource("13_qku51"), ExtResource("14_ws2by")])
 
 [node name="AttackDistance" type="Area2D" parent="."]

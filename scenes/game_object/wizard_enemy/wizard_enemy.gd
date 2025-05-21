@@ -13,12 +13,14 @@ signal remote_attack(start_position: Vector2)
 @onready var death_component: Node2D = $DeathComponent
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
 @onready var fire_ball_ability_controller: Node = $FireBallAbilityController
+@onready var drop_component: Node = $DropComponent
 
 @export var enemy_name: String = "敌人"
 
 var enemy_info: EnemyTemplate
 var is_moving = false
 var is_stop_moving = false
+var level: int = 1
 
 
 func _ready() -> void:
@@ -27,8 +29,9 @@ func _ready() -> void:
 	remote_attack_distance_component.area_exited.connect(_on_remote_attack_distance_component_exited)
 	health_component.health_changed.connect(_on_health_changed)
 	fire_ball_timer.timeout.connect(_on_fire_ball_timer_timeout)
-	enemy_info = EnemyTemplate.create_normal_enemy()
+	enemy_info = EnemyTemplate.create_normal_enemy(level)
 	enemy_info.enemy_name = enemy_name
+	update_attributes()
 
 
 func _process(delta: float) -> void:
@@ -50,12 +53,8 @@ func update_attributes() -> void:
 	death_component.experience_drop = enemy_info.base_exp
 	hurtbox_component.defense = enemy_info.base_defense
 	fire_ball_ability_controller.basic_damage = enemy_info.base_attack
+	drop_component.level = enemy_info.level
 	health_bar.value = 1
-
-
-func set_level(level: int):
-	enemy_info.setup_scaled_enemy(level)
-	update_attributes()
 
 
 func set_is_moving(moving: bool):

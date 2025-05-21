@@ -246,9 +246,11 @@ one_shot = true
 [node name="HealthBar" parent="." instance=ExtResource("8_l1g56")]
 
 [node name="SwordRandomStreamPlayer2DComponent" parent="." instance=ExtResource("4_28lpv")]
+bus = &"sfx"
 streams = Array[AudioStream]([ExtResource("6_gqr5v")])
 
 [node name="HitRandomStreamPlayer2DComponent" parent="." instance=ExtResource("4_28lpv")]
+bus = &"sfx"
 streams = Array[AudioStream]([ExtResource("5_pknkg")])
 
 [node name="PickupArea2D" type="Area2D" parent="."]

@@ -22,6 +22,7 @@ wait_time = 5.0
 one_shot = true
 
 [node name="RandomStreamPlayer2DComponent" parent="." instance=ExtResource("3_7jfm3")]
+bus = &"sfx"
 streams = Array[AudioStream]([ExtResource("4_fw8ou"), ExtResource("5_sibca"), ExtResource("6_ytnv2"), ExtResource("7_7w8fa"), ExtResource("8_a44g0")])
 
 [node name="Area2D" type="Area2D" parent="."]

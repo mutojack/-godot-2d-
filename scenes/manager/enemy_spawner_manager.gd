@@ -19,7 +19,7 @@ var max_level: int = 5
 
 
 func _ready() -> void:
-	enemy_table.add_item(basic_enemy_scene, 0)
+	enemy_table.add_item(basic_enemy_scene, 3000)
 	enemy_table.add_item(wizard_enemy_scene, 1000)
 	base_spawn_time = timer.wait_time
 	timer.timeout.connect(on_timer_timeout)
@@ -62,9 +62,7 @@ func get_spawn_position(enemy: Node2D):
 		# 检测生成点是否可放置敌人（圆形区域检测）
 		if enemy == null:
 			return
-		var random_level = randi_range(min_level, max_level)
-		print("ac_min_max", " %d:%d " % [min_level, max_level], " random:", random_level)
-		enemy.set_level(random_level)
+
 		var shape = CircleShape2D.new()
 		shape.radius = GameUtils.get_collision_radius(enemy)
 		var shape_params = PhysicsShapeQueryParameters2D.new()
@@ -96,7 +94,9 @@ func on_timer_timeout():
 	var enemy_scene = enemy_table.pick_item()
 	var enemy = enemy_scene.instantiate() as Node2D
 	var entities_layer = get_tree().get_first_node_in_group("entities_layer")
-	
+	var random_level = randi_range(min_level, max_level)
+	print("ac_min_max", " %d:%d " % [min_level, max_level], " random:", random_level)
+	enemy.level = random_level
 	entities_layer.add_child(enemy)
 	enemy.global_position = get_spawn_position(enemy)
 

@@ -7,7 +7,7 @@
 script = ExtResource("1_kw670")
 equip_type = 1
 base_attack = 0
-base_defense = 2
+base_defense = 1
 base_health = 0
 base_speed = 0
 attack_growth = 1.1
@@ -26,6 +26,7 @@ name = "靴子"
 type = 1
 description = "可提升防御力的靴子"
 max_stack = 1
+cd = -1
 quantity = 1
 scene_path = "uid://5p221rl5l6xb"
 texture = ExtResource("2_kw670")

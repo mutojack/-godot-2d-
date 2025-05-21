@@ -34,5 +34,7 @@ func _notification(what):
 		exiting = true
 		# 直接在主线程保存（适合小数据量）
 		if Global.player_info:
+			Global.player_info.outline_date_time = Time.get_datetime_dict_from_system()
 			Global.player_info.save_to_file()
+			Global.my_settings.save_to_file()
 		get_tree().quit()

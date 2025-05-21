@@ -24,6 +24,34 @@ func calculate_damage(attack: int, defense: int,
 	return int(max(1, damage))
 
 
+#  计算两个日期的时间差（秒数 + hh:mm:ss格式）
+func calculate_time_diff(start_date: Dictionary, end_date: Dictionary) -> Dictionary:
+	var start_unix = Time.get_unix_time_from_datetime_dict(start_date)
+	var end_unix = Time.get_unix_time_from_datetime_dict(end_date)
+	
+	var diff_seconds = int(end_unix - start_unix)
+	
+	var diff_formatted = seconds_to_hhmmss(diff_seconds)
+	
+	return {
+		"total_seconds": diff_seconds,
+		"hhmmss": diff_formatted
+	}
+
+#秒数转hh:mm:ss
+func seconds_to_hhmmss(total_seconds: int) -> String:
+	var hours = total_seconds / 3600
+	var minutes = (total_seconds % 3600) / 60
+	var seconds = total_seconds % 60
+	return "%02d时%02d分%02d秒" % [hours, minutes, seconds]
+
+# 计算离线经验
+func calc_outline_experience(total_seconds: int) -> int:
+	var n_enemy = EnemyTemplate.create_normal_enemy(Global.player_info.level)
+	n_enemy.setup_scaled_enemy()
+	return int(total_seconds * 0.05 * n_enemy.base_exp) 
+
+
 # mapper专门处理所有消耗物品的效果
 func _on_use_consumable(item: BasicDrop):
 	if item.type != BasicDrop.TYPE_ENUM.CONSUMABLE:

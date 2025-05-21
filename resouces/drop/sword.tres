@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_ux5ir")
 equip_type = 5
-base_attack = 2
+base_attack = 1
 base_defense = 0
 base_health = 0
 base_speed = 0
@@ -16,11 +16,17 @@ health_growth = 1.15
 speed_growth = 1.05
 rarity = 0
 level = 1
+calculated_attack = 0
+calculated_defense = 0
+calculated_health = 0
+calculated_speed = 0
+bonus_attributes = Array[Dictionary]([])
 id = "sword"
 name = "剑"
 type = 1
 description = "尖锐的剑，剑仙的好伙伴"
 max_stack = 1
+cd = -1
 quantity = 1
 scene_path = "uid://cl7tox5rtt4wb"
 texture = ExtResource("2_tkmxp")

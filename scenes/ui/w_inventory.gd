@@ -99,6 +99,9 @@ func _on_item_slot_mouse_left_pressed(index: int) -> void:
 
 func _selected_item_slot_setter(value: int) -> void:
 	if selected_item_slot != -1:
+		if selected_item_slot >= grid_container.get_children().size():
+			selected_item_slot = -1
+			return
 		var slot = grid_container.get_child(selected_item_slot)
 		if slot == null:
 			return

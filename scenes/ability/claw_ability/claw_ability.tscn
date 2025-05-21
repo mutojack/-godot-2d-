@@ -121,6 +121,7 @@ libraries = {
 autoplay = "attack"
 
 [node name="RandomStreamPlayer2DComponent" parent="." instance=ExtResource("2_nkgmw")]
+bus = &"sfx"
 streams = Array[AudioStream]([ExtResource("3_1b53l")])
 
 [node name="Visuals" type="Node2D" parent="."]

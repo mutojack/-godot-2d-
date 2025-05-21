@@ -42,6 +42,10 @@ class_name Player
 @export var exp_base: int = 100         # 基础经验值
 @export var exp_growth: float = 1.2     # 经验成长系数
 
+# 记录时间
+@export var outline_date_time: Dictionary
+@export var accumulate_sceconds: int = 0 
+
 func _level_setter(value):
 	if value <= level or value < 1:
 		return  # 不允许降级或设置为无效等级

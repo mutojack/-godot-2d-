@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c7got7is62jep"]
+[gd_scene load_steps=22 format=3 uid="uid://c7got7is62jep"]
 
 [ext_resource type="PackedScene" uid="uid://cv8hlk81bnhnr" path="res://scenes/ui/arena_time_ui.tscn" id="1_6q06x"]
 [ext_resource type="Script" uid="uid://dxyk4ynxj771m" path="res://scenes/main/main.gd" id="1_a8run"]
@@ -18,6 +18,8 @@
 [ext_resource type="Texture2D" uid="uid://brywakwphumxv" path="res://assets/icon/dragon_icon.png" id="8_raeie"]
 [ext_resource type="PackedScene" uid="uid://br7u86newprqs" path="res://scenes/ui/monster_setting_page.tscn" id="12_ou6is"]
 [ext_resource type="PackedScene" uid="uid://co8xamhvjpa1q" path="res://scenes/ui/player_info.tscn" id="15_ou6is"]
+[ext_resource type="PackedScene" uid="uid://b00l13xfiinde" path="res://scenes/game_object/basic_enemy/basic_enemy.tscn" id="17_r4lks"]
+[ext_resource type="PackedScene" uid="uid://f6x2226dy01d" path="res://scenes/game_object/wizard_enemy/wizard_enemy.tscn" id="18_pg34l"]
 [ext_resource type="PackedScene" uid="uid://djdorpxtkpry1" path="res://scenes/ui/level_up_tip.tscn" id="19_necax"]
 
 [node name="Main" type="Node"]
@@ -162,6 +164,8 @@ visible = false
 [node name="ArenaTimerManager" parent="." instance=ExtResource("2_ow5a4")]
 
 [node name="EnemyManager" parent="." node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("1_l3cfh")]
+basic_enemy_scene = ExtResource("17_r4lks")
+wizard_enemy_scene = ExtResource("18_pg34l")
 arena_time_manager = NodePath("../ArenaTimerManager")
 
 [node name="GameCamera" parent="." instance=ExtResource("1_k2fmo")]
