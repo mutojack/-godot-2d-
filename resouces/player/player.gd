@@ -21,15 +21,15 @@ class_name Player
 @export var equip_attack: int = 0
 @export var equip_defense: int = 0
 @export var 生命值: int = 100
-@export var 攻击力: int = 8
-@export var 防御力: int = 2
+@export var 攻击力: int = 15
+@export var 防御力: int = 6
 @export var 每秒回复: int = 1
 @export var 经验: int  
 
 # 基础属性值（1级时的属性）
 @export var base_health: int = 100
-@export var base_attack: int = 8
-@export var base_defense: int = 2
+@export var base_attack: int = 15
+@export var base_defense: int = 6
 @export var base_regen: int = 1
 
 # 成长系数 - 可以调整这些值来平衡游戏
@@ -44,7 +44,9 @@ class_name Player
 
 # 记录时间
 @export var outline_date_time: Dictionary
-@export var accumulate_sceconds: int = 0 
+@export var accumulate_sceconds: int = 0
+
+@export var is_new: bool = true
 
 func _level_setter(value):
 	if value <= level or value < 1:

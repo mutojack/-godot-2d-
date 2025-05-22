@@ -25,6 +25,7 @@ func _ready() -> void:
 	timer.timeout.connect(on_timer_timeout)
 	arena_time_manager.arena_difficulty_increased.connect(on_arena_difficulty_increased)
 	monster_setting_page.monster_level_range_selected.connect(on_monster_level_range_selected)
+	monster_setting_page.monster_max_count_selected.connect(on_monseter_max_count_selected)
 	if Global.player_info:
 		var player_info = Global.player_info
 		min_level = max(1, player_info.level - 1)
@@ -114,5 +115,9 @@ func on_monster_level_range_selected(min: int, max: int):
 		min_level = min
 		max_level = max
 		is_gene_by_player = false
+
+
+func on_monseter_max_count_selected(count: int):
+	max_spawn_count = count
 	
 	

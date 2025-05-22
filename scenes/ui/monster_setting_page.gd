@@ -1,11 +1,13 @@
 extends CanvasLayer
 
 signal monster_level_range_selected(min_level: int, max_level: int)  # 信号返回等级范围
+signal monster_max_count_selected(count: int)
 
 @onready var option_button: OptionButton = %OptionButton
 @onready var close_button: Button = %CloseButton
 @onready var margin_container: MarginContainer = $MarginContainer
 @onready var experience_manager: Node = $"../Entities/Player/ExperienceManager"
+@onready var num_button: OptionButton = %NumButton
 
 @export var player_level: int = 5:
 	set(value):
@@ -24,6 +26,7 @@ func _ready():
 	option_button.item_selected.connect(_on_option_button_selected)
 	close_button.pressed.connect(_on_close_button_pressed)
 	experience_manager.level_up.connect(_on_level_up)
+	num_button.item_selected.connect(_on_num_button_selected)
 	
 	# 设置MarginContainer拦截点击
 	margin_container.mouse_filter = Control.MOUSE_FILTER_STOP
@@ -34,6 +37,15 @@ func _ready():
 	bg.mouse_filter = Control.MOUSE_FILTER_IGNORE
 	margin_container.add_child(bg)
 	bg.z_index = -1
+	set_num_button()
+
+
+func set_num_button():
+	num_button.add_item('1', 1)
+	num_button.add_item('3', 3)
+	num_button.add_item('5', 5)
+	num_button.add_item('10', 10)
+	num_button.add_item('无限制', -1)
 
 
 func update_options():
@@ -92,3 +104,8 @@ func _on_close_button_pressed():
 func _on_level_up(current_level: int):
 	player_level = current_level
 	update_options()
+
+
+func _on_num_button_selected(index: int):
+	var combined_id = num_button.get_item_id(index)
+	monster_max_count_selected.emit(combined_id)

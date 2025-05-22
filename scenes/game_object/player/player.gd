@@ -40,6 +40,7 @@ func _ready() -> void:
 	init_position = self.global_position
 	health_component.init_position = init_position
 	c_inventory.equip_changed_calcul.connect(on_equip_changed_calcul)
+	Global.player_info.is_new = false
 
 
 func update_attributes(is_revert: bool = true) -> void:

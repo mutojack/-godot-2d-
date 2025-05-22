@@ -24,6 +24,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -43,21 +44,28 @@ size_flags_vertical = 4
 layout_mode = 2
 theme_type_variation = &"BlueOutlineLabel"
 theme_override_font_sizes/font_size = 32
-text = "The Arena"
+text = "无限修真"
+
+[node name="ResetButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_fe2o3")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "开始游戏"
 
 [node name="PlayButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_fe2o3")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Play"
+text = "继续游戏"
 
 [node name="OptionsButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_fe2o3")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Options"
+text = "设置"
 
 [node name="QuitButton" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" instance=ExtResource("2_fe2o3")]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Quit"
+text = "退出"
+
+[node name="AcceptDialog" type="AcceptDialog" parent="MarginContainer/PanelContainer"]
 
 [node name="Vignette" parent="." instance=ExtResource("2_m1kxf")]

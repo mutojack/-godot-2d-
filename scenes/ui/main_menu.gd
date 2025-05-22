@@ -2,11 +2,18 @@ extends CanvasLayer
 
 var options_scene = preload("res://scenes/ui/options_menu.tscn")
 var exiting = false
+@onready var accept_dialog: AcceptDialog = $MarginContainer/PanelContainer/AcceptDialog
 
 func _ready() -> void:
 	$%PlayButton.pressed.connect(on_play_pressed)
 	$%OptionsButton.pressed.connect(on_options_pressed)
 	$%QuitButton.pressed.connect(on_quit_pressed)
+	%ResetButton.pressed.connect(on_reset_pressed)
+	accept_dialog.confirmed.connect(on_accept_confirmed)
+	accept_dialog.title = "警告"
+	accept_dialog.dialog_text = "确定要重新开始游戏吗？"
+	if Global.player_info.is_new:
+		$%PlayButton.hide()
 	update_outline_info()
 
 
@@ -34,6 +41,10 @@ func on_options_closed(options_instance: Node):
 	options_instance.queue_free()
 
 
+func on_reset_pressed():
+	accept_dialog.popup_centered()
+
+
 func update_outline_info():
 	if !Global.player_info || !Global.player_info.outline_date_time:
 		return
@@ -51,3 +62,11 @@ func _notification(what):
 			Global.player_info.save_to_file()
 			Global.my_settings.save_to_file()
 		get_tree().quit()
+
+
+func on_accept_confirmed():
+	Global.player_info = Player.new()
+	Global.player_info.save_to_file()
+	ScreenTransition.transition()
+	await ScreenTransition.transitioned_halfway
+	get_tree().change_scene_to_file("res://scenes/main/main.tscn")
