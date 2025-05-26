@@ -3,13 +3,17 @@ extends Node
 const MAX_RANGE = 150
 
 @export var sword_ability: PackedScene
+var tech: Ability = preload("res://resouces/upgrades/sword.tres")
 var basic_damage = 0
 var base_wait_time
+var additional_damage_percent = 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	base_wait_time = $Timer.wait_time
 	$Timer.timeout.connect(on_timer_timeout)
+	GameEvents.upgrade_tech.connect(on_upgrade_tech)
+	additional_damage_percent = 1 + tech.total_additional
 	#GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
 
 
@@ -38,13 +42,17 @@ func on_timer_timeout():
 	var sword_instance = sword_ability.instantiate() as Node2D
 	var foreground_layer = get_tree().get_first_node_in_group("foreground_layer")
 	foreground_layer.add_child(sword_instance)
-	sword_instance.hitbox_component.damage = basic_damage
+	sword_instance.hitbox_component.damage = basic_damage * additional_damage_percent
 	
 	var attack_dir = (nearest_enemy.global_position - player.global_position).normalized()
 	sword_instance.global_position = nearest_enemy.global_position - attack_dir * 20  # 边缘偏移
 	
 	# 确保朝向正确
 	sword_instance.rotation = attack_dir.angle()
+
+
+func on_upgrade_tech():
+	additional_damage_percent = 1 + tech.total_additional
 
 
 #func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):

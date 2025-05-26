@@ -34,6 +34,7 @@ func on_quit_pressed():
 		Global.player_info.outline_date_time = Time.get_datetime_dict_from_system()
 		Global.player_info.save_to_file()
 		Global.my_settings.save_to_file()
+		Global.save_all_resources()
 	get_tree().quit()
 
 
@@ -48,8 +49,8 @@ func on_reset_pressed():
 func update_outline_info():
 	if !Global.player_info || !Global.player_info.outline_date_time:
 		return
-	Global.player_info.accumulate_sceconds += min(GameUtils.calculate_time_diff(Global.player_info.outline_date_time, 
-		Time.get_datetime_dict_from_system()).total_seconds, 60 * 60 * 24)
+	Global.player_info.accumulate_sceconds = min(GameUtils.calculate_time_diff(Global.player_info.outline_date_time, 
+		Time.get_datetime_dict_from_system()).total_seconds + Global.player_info.accumulate_sceconds, 60 * 60 * 24)
 	print("获取到积累时间：", Global.player_info.accumulate_sceconds)
 
 
@@ -61,6 +62,7 @@ func _notification(what):
 			Global.player_info.outline_date_time = Time.get_datetime_dict_from_system()
 			Global.player_info.save_to_file()
 			Global.my_settings.save_to_file()
+			Global.save_all_resources()
 		get_tree().quit()
 
 

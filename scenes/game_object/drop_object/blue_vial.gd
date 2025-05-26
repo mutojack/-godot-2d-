@@ -28,6 +28,8 @@ func _ready() -> void:
 	valid_timer.timeout.connect(queue_free)
 	valid_timer.start()
 	if item is BasicDrop && item is not EquipDrop:
+		if item.id == '':
+			return
 		item = item.duplicate(true)
 
 
@@ -44,6 +46,12 @@ func tween_collect(percent: float, start_position: Vector2):
 
 
 func collect(item: BasicDrop):
+	if item.id == "tech_book":
+		item.quantity += 1
+		Global.tech_book.quantity += 1
+		Global.save_all_resources()
+		queue_free()
+		return
 	GameEvents.emit_item_collected(item)
 	queue_free()
 	

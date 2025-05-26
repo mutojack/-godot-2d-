@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://c0j3yr70p6sjr"]
+
+[ext_resource type="Script" uid="uid://dylmv6oi5s1nb" path="res://resouces/upgrades/ability.gd" id="1_a57wd"]
+
+[resource]
+script = ExtResource("1_a57wd")
+id = "sword"
+max_level = 5
+name = "御剑术"
+description = "驾驭小剑，对敌人造成精准伤害"
+level = 1
+additional_step = 0.1
+total_additional = 0.0

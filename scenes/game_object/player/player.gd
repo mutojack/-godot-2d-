@@ -21,6 +21,7 @@ const ACCELERATION_SMOOTHING = 25
 @onready var main_ui: Control = $"../../UILayer/MainUI"
 @onready var c_inventory: CInventory = $CInventory
 @onready var hurtbox_component: HurtboxComponent = $HurtboxComponent
+@onready var axe_ability_controller: Node = $Abilities/AxeAbilityController
 
 var number_coliiding_bodies = 0
 var auto_attack = true
@@ -48,10 +49,11 @@ func update_attributes(is_revert: bool = true) -> void:
 	health_component.max_health = Global.player_info.生命值
 	if is_revert:
 		health_component.current_health = Global.player_info.生命值
-	health_component.player_health_changed.emit(Global.player_info.生命值, Global.player_info.生命值)
+	health_component.player_health_changed.emit(health_component.current_health, Global.player_info.生命值)
 	hurtbox_component.defense = Global.player_info.防御力
 	update_health_display()
 	sword_ability_controller.basic_damage = Global.player_info.攻击力
+	axe_ability_controller.basic_damage = Global.player_info.攻击力
 	weapon_hitbox_component.damage = Global.player_info.攻击力
 	GameEvents.emit_player_stats_changed(Global.player_info)
 

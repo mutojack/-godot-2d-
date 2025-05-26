@@ -17,6 +17,7 @@ enum DROP_ENUM {
 	RING,
 	NECKLACE,
 	ELIXIR,
+	TECHBOOK,
 }
 
 const DROP_MAPPER = [
@@ -28,4 +29,5 @@ const DROP_MAPPER = [
 	'ring',
 	'necklace',
 	'elixir',
+	'tech_book',
 ]

@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="BasicDrop" load_steps=3 format=3 uid="uid://dx4s6xov8w3n2"]
+
+[ext_resource type="Script" uid="uid://6ry7vkrs5mpj" path="res://resouces/drop/basic_drop.gd" id="1_dsuoq"]
+[ext_resource type="Texture2D" uid="uid://cfsesjb7qsg7i" path="res://assets/icon/武功秘籍.png" id="2_4f28v"]
+
+[resource]
+script = ExtResource("1_dsuoq")
+id = "tech_book"
+name = "技能升级书"
+type = 2
+description = "可以用于升级技能"
+max_stack = 9999
+cd = -1
+quantity = 0
+scene_path = "uid://bcael50ql4uyl"
+texture = ExtResource("2_4f28v")

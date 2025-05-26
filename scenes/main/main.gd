@@ -37,4 +37,5 @@ func _notification(what):
 			Global.player_info.outline_date_time = Time.get_datetime_dict_from_system()
 			Global.player_info.save_to_file()
 			Global.my_settings.save_to_file()
+			Global.save_all_resources()
 		get_tree().quit()

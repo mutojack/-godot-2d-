@@ -5,6 +5,8 @@
 [resource]
 script = ExtResource("1_lywc2")
 id = "sword_damage"
-max_quantity = 0
-name = "Sword Damage"
-description = "Increase sword damage rate by 15%."
+max_level = 5
+name = "御剑术"
+description = "召唤小剑，从敌人身上划过，每级增加基础攻击%10的伤害。"
+level = 1
+additional_step = 0.1

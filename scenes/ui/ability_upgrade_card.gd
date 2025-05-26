@@ -1,56 +1,55 @@
 extends PanelContainer
 
-signal selected
+var tech: Ability
+var tech_book: BasicDrop
+@export var type: String 
 
 @onready var name_label: Label = $%NameLabel
 @onready var description_label: Label = $%DescriptionLabel
-
-var disabled = false
+@onready var need_label: Label = %NeedLabel
+@onready var upgrade_button: Button = %upgradeButton
+@onready var level_label: Label = %LevelLabel
 
 
 func _ready() -> void:
-	gui_input.connect(on_gui_input)
-	mouse_entered.connect(on_mouse_entered)
+	if type == "sword":
+		tech = Global.sword_ability
+	else:
+		tech = Global.axe_ability
+	tech_book = Global.tech_book
+	upgrade_button.pressed.connect(_on_upgrade_button_pressed)
+	GameEvents.upgrade_tech.connect(_on_upgrade_tech)
+	update_display()
+
+func disabled_upgrade_button():
+	upgrade_button.disabled = true
+	upgrade_button.icon = null
+	upgrade_button.text = "MAX"
+	need_label.text = ""
+
+
+func update_display():
+	name_label.text = tech.name
+	description_label.text = tech.description
+	need_label.text = str(tech.level * 2 + 1)
+	level_label.text = "Lv.%d" % tech.level
+	if tech:
+		if tech.level == tech.max_level:
+			disabled_upgrade_button()
+	if tech_book.quantity < tech.level * 2 + 1:
+		upgrade_button.disabled = true
+
+
+func _on_upgrade_button_pressed():
+	if tech:
+		if tech.level < tech.max_level:
+			tech_book.quantity -= tech.level * 2 + 1
+			tech.level += 1
+			tech.total_additional += tech.additional_step
+			GameEvents.emit_upgrade_tech()
+			Global.save_all_resources()
+
+
+func _on_upgrade_tech():
+	update_display()
 	
-
-func play_in(delay: float = 0):
-	modulate = Color.TRANSPARENT
-	await get_tree().create_timer(delay).timeout
-	$AnimationPlayer.play("in")
-
-
-func play_discard():
-	$AnimationPlayer.play("discard")
-
-
-func set_ability_upgrade(upgrade: AbilityUpgrade):
-	name_label.text = upgrade.name
-	description_label.text = upgrade.description
-
-
-func select_card():
-	disabled = true
-	$AnimationPlayer.play("selected")
-
-	for other_card in get_tree().get_nodes_in_group("upgrade_card"):
-		if other_card == self:
-			continue
-		other_card.play_discard()
-
-	await $AnimationPlayer.animation_finished
-	selected.emit()
-
-
-func on_gui_input(event: InputEvent):
-	if disabled:
-		return
-
-	if event.is_action("left_click"):
-		select_card()
-
-
-func on_mouse_entered():
-	if disabled:
-		return
-
-	$HoverAnimationPlayer.play("hover")

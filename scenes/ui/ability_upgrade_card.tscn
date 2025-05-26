@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dbfifrptw6c5f"]
+[gd_scene load_steps=23 format=3 uid="uid://dbfifrptw6c5f"]
 
 [ext_resource type="Script" uid="uid://k781wmgo3xh4" path="res://scenes/ui/ability_upgrade_card.gd" id="1_8ur3e"]
 [ext_resource type="PackedScene" uid="uid://bnlajjhmleip7" path="res://scenes/component/random_stream_player_component.tscn" id="2_xicjk"]
@@ -12,6 +12,8 @@
 [ext_resource type="AudioStream" uid="uid://dqxa1j5p7wlh" path="res://assets/audio/switch8.ogg" id="10_m713t"]
 [ext_resource type="AudioStream" uid="uid://cvem3vhocya7k" path="res://assets/audio/switch9.ogg" id="11_gnty3"]
 [ext_resource type="AudioStream" uid="uid://ntipu5h8hugs" path="res://assets/audio/switch10.ogg" id="12_vel0p"]
+[ext_resource type="PackedScene" uid="uid://dtux57v8k72bo" path="res://scenes/ui/sound_button.tscn" id="13_ksxgh"]
+[ext_resource type="Texture2D" uid="uid://cfsesjb7qsg7i" path="res://assets/icon/武功秘籍.png" id="14_g40w5"]
 
 [sub_resource type="Animation" id="Animation_m44y0"]
 length = 0.001
@@ -204,6 +206,7 @@ _data = {
 [node name="AbilityUpgradeCard" type="PanelContainer" groups=["upgrade_card"]]
 custom_minimum_size = Vector2(150, 150)
 pivot_offset = Vector2(75, 75)
+mouse_filter = 1
 script = ExtResource("1_8ur3e")
 
 [node name="HoverPlayerComponent" parent="." instance=ExtResource("2_xicjk")]
@@ -248,10 +251,33 @@ horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
 
+[node name="LevelLabel" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Lv.1"
+
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 theme_type_variation = &"BlueOutlineLabel"
 theme_override_colors/font_shadow_color = Color(0.14902, 0.168627, 0.266667, 1)
 text = "write something descrition here"
 autowrap_mode = 2
+
+[node name="upgradeButton" parent="MarginContainer/VBoxContainer" instance=ExtResource("13_ksxgh")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+text = "升级"
+icon = ExtResource("14_g40w5")
+expand_icon = true
+
+[node name="NeedLabel" type="Label" parent="MarginContainer/VBoxContainer/upgradeButton"]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 29.0
+offset_top = 9.0
+offset_right = 51.0
+offset_bottom = 24.0
+text = "1"

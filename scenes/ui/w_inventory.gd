@@ -89,7 +89,7 @@ func _on_tab_changed(tab: int) -> void:
 	current_category = tab
 	scroll_container.scroll_vertical = 0
 	init_slot()
-	await get_tree().process_
+	await get_tree().process_frame
 	update_items_display()
 
 

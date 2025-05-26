@@ -5,6 +5,8 @@
 [resource]
 script = ExtResource("1_pkf2m")
 id = "axe_damage"
-max_quantity = 0
-name = "Axe Damage"
-description = "Increase axe damage rate by 10%."
+max_level = 5
+name = "旋转大斧"
+description = "召唤出大斧头在周身旋转打击，每级增加10%的伤害。"
+level = 1
+additional_step = 0.1

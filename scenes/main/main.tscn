@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c7got7is62jep"]
+[gd_scene load_steps=25 format=3 uid="uid://c7got7is62jep"]
 
 [ext_resource type="PackedScene" uid="uid://cv8hlk81bnhnr" path="res://scenes/ui/arena_time_ui.tscn" id="1_6q06x"]
 [ext_resource type="Script" uid="uid://dxyk4ynxj771m" path="res://scenes/main/main.gd" id="1_a8run"]
@@ -14,13 +14,16 @@
 [ext_resource type="Texture2D" uid="uid://doqbcqfxmb407" path="res://assets/ui/package_icon.png" id="3_th5th"]
 [ext_resource type="PackedScene" uid="uid://bjulh6tvhxv2f" path="res://scenes/ui/w_inventory.tscn" id="4_7smn1"]
 [ext_resource type="FontFile" uid="uid://cltip2b71avt7" path="res://assets/font/QingNiaoHuaGuangJianMeiHei-2.ttf" id="5_hxu8e"]
-[ext_resource type="Script" uid="uid://bbf5vknhp7tkd" path="res://scenes/main/monster_setting.gd" id="8_nvumn"]
+[ext_resource type="Script" uid="uid://bbf5vknhp7tkd" path="res://scenes/main/technology.gd" id="8_nvumn"]
 [ext_resource type="Texture2D" uid="uid://brywakwphumxv" path="res://assets/icon/dragon_icon.png" id="8_raeie"]
+[ext_resource type="Script" uid="uid://bineemy5qct54" path="res://scenes/main/monster_setting.gd" id="9_s17dp"]
+[ext_resource type="Texture2D" uid="uid://cfsesjb7qsg7i" path="res://assets/icon/武功秘籍.png" id="11_m4h2d"]
 [ext_resource type="PackedScene" uid="uid://br7u86newprqs" path="res://scenes/ui/monster_setting_page.tscn" id="12_ou6is"]
 [ext_resource type="PackedScene" uid="uid://co8xamhvjpa1q" path="res://scenes/ui/player_info.tscn" id="15_ou6is"]
 [ext_resource type="PackedScene" uid="uid://b00l13xfiinde" path="res://scenes/game_object/basic_enemy/basic_enemy.tscn" id="17_r4lks"]
 [ext_resource type="PackedScene" uid="uid://f6x2226dy01d" path="res://scenes/game_object/wizard_enemy/wizard_enemy.tscn" id="18_pg34l"]
 [ext_resource type="PackedScene" uid="uid://djdorpxtkpry1" path="res://scenes/ui/level_up_tip.tscn" id="19_necax"]
+[ext_resource type="PackedScene" uid="uid://byub7o01bbndd" path="res://scenes/ui/technology_page.tscn" id="23_p8abn"]
 
 [node name="Main" type="Node"]
 script = ExtResource("1_a8run")
@@ -49,9 +52,49 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("3_raeie")
 
-[node name="MonsterSetting" type="Control" parent="UILayer/MainUI"]
+[node name="Technology" type="Control" parent="UILayer/MainUI"]
+layout_mode = 3
 anchors_preset = 0
 script = ExtResource("8_nvumn")
+tech_scene = ExtResource("23_p8abn")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="UILayer/MainUI/Technology"]
+layout_mode = 0
+offset_left = 485.0
+offset_top = 19.0
+offset_right = 525.0
+offset_bottom = 59.0
+scale = Vector2(0.850954, 0.801184)
+texture = ExtResource("11_m4h2d")
+
+[node name="DragonButton" type="Button" parent="UILayer/MainUI/Technology"]
+layout_mode = 0
+offset_left = 481.0
+offset_top = 8.0
+offset_right = 489.0
+offset_bottom = 16.0
+scale = Vector2(4.9417, 4.9396)
+theme_type_variation = &"CommonButton"
+
+[node name="Label" type="Label" parent="UILayer/MainUI/Technology"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 489.0
+offset_top = 5.0
+offset_right = 581.0
+offset_bottom = 22.0
+grow_horizontal = 0
+size_flags_horizontal = 4
+theme_override_colors/font_outline_color = Color(0.247059, 0.14902, 0.192157, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 12
+text = "技能"
+
+[node name="MonsterSetting" type="Control" parent="UILayer/MainUI"]
+anchors_preset = 0
+script = ExtResource("9_s17dp")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="UILayer/MainUI/MonsterSetting"]
 layout_mode = 0

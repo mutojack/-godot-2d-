@@ -8,6 +8,7 @@ signal auto_fire_changed(open: bool)
 signal player_stats_changed(player_info: Player)
 signal level_up_play
 signal use_consumable(item: BasicDrop)
+signal upgrade_tech
 
 func emit_experience_vial_collected(number: int):
 	experience_vial_collected.emit(number)
@@ -39,3 +40,7 @@ func emit_level_up_play():
 
 func emit_use_consumable(item: BasicDrop):
 	use_consumable.emit(item)
+	
+
+func emit_upgrade_tech():
+	upgrade_tech.emit()

@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://lpf2on53iu4a"]
+[gd_scene load_steps=4 format=3 uid="uid://lpf2on53iu4a"]
 
 [ext_resource type="Script" uid="uid://dj2ge1bwathpp" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.gd" id="1_s261h"]
 [ext_resource type="PackedScene" uid="uid://dqpyibob6msml" path="res://scenes/ability/sword_ability/sword_ability.tscn" id="2_pxip5"]
+[ext_resource type="Resource" uid="uid://bxx06nfrmkml2" path="res://resouces/upgrades/axe.tres" id="3_xuccq"]
 
 [node name="AxeAbilityController" type="Node"]
 script = ExtResource("1_s261h")
 axe_ability_scene = ExtResource("2_pxip5")
+tech = ExtResource("3_xuccq")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 3.5

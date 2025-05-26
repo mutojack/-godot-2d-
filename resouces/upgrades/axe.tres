@@ -1,12 +1,14 @@
-[gd_resource type="Resource" script_class="Ability" load_steps=3 format=3 uid="uid://7rapgtgid1tv"]
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://bxx06nfrmkml2"]
 
-[ext_resource type="PackedScene" uid="uid://lpf2on53iu4a" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.tscn" id="1_bqcxr"]
 [ext_resource type="Script" uid="uid://dylmv6oi5s1nb" path="res://resouces/upgrades/ability.gd" id="1_uwbfr"]
 
 [resource]
 script = ExtResource("1_uwbfr")
-ability_controller_scene = ExtResource("1_bqcxr")
 id = "axe"
-max_quantity = 1
-name = "Axe"
-description = "Periodically sends out  a spinning axe."
+max_level = 5
+name = "飞斧旋风"
+description = "召唤飞斧护在玩家周身，并对敌人造成伤害。"
+level = 1
+additional_step = 0.1
+total_additional = 0.0
+metadata/_custom_type_script = "uid://dylmv6oi5s1nb"

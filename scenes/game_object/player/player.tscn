@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dxuk6w446dp6x"]
+[gd_scene load_steps=27 format=3 uid="uid://dxuk6w446dp6x"]
 
 [ext_resource type="Script" uid="uid://574cc4wy034i" path="res://scenes/game_object/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://dg58qc3oe0acc" path="res://scenes/ui/name_label.tscn" id="1_gbew5"]
@@ -12,7 +12,9 @@
 [ext_resource type="Texture2D" uid="uid://cttjdpcysq646" path="res://scenes/game_object/player/player.png" id="7_rix40"]
 [ext_resource type="PackedScene" uid="uid://bntj1p3ve2lkp" path="res://scenes/ability/sword_ability_controller/sword_ability_controller.tscn" id="8_bfkik"]
 [ext_resource type="Texture2D" uid="uid://bd87hb3soa7gi" path="res://scenes/game_object/drop_object/sword.png" id="8_dy4tu"]
+[ext_resource type="PackedScene" uid="uid://lpf2on53iu4a" path="res://scenes/ability/axe_ability_controller/axe_ability_controller.tscn" id="8_gme53"]
 [ext_resource type="PackedScene" uid="uid://bp8o7m247ixj4" path="res://scenes/ui/health_bar.tscn" id="8_l1g56"]
+[ext_resource type="PackedScene" uid="uid://dk6vkw6a1waes" path="res://scenes/ability/axe_ability/axe_ability.tscn" id="9_gme53"]
 [ext_resource type="PackedScene" uid="uid://c3hfwxa511gqa" path="res://scenes/component/hitbox_component.tscn" id="10_28lpv"]
 [ext_resource type="PackedScene" uid="uid://842ouwv1hn5b" path="res://scenes/component/hurtbox_component.tscn" id="15_llc7q"]
 
@@ -238,6 +240,9 @@ is_player = true
 [node name="Abilities" type="Node" parent="."]
 
 [node name="SwordAbilityController" parent="Abilities" instance=ExtResource("8_bfkik")]
+
+[node name="AxeAbilityController" parent="Abilities" instance=ExtResource("8_gme53")]
+axe_ability_scene = ExtResource("9_gme53")
 
 [node name="DamageIntervalTimer" type="Timer" parent="."]
 wait_time = 0.5

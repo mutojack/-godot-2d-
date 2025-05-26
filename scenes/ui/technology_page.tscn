@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=3 uid="uid://byub7o01bbndd"]
+
+[ext_resource type="Script" uid="uid://cxsi8ot358liw" path="res://scenes/ui/technology_page.gd" id="1_gc3v1"]
+[ext_resource type="PackedScene" uid="uid://dbfifrptw6c5f" path="res://scenes/ui/ability_upgrade_card.tscn" id="2_sour3"]
+[ext_resource type="Texture2D" uid="uid://cfsesjb7qsg7i" path="res://assets/icon/武功秘籍.png" id="3_1nl2e"]
+[ext_resource type="Texture2D" uid="uid://clixtoeo1lsel" path="res://assets/ui/cancel.png" id="5_8qg35"]
+[ext_resource type="PackedScene" uid="uid://dtux57v8k72bo" path="res://scenes/ui/sound_button.tscn" id="5_sotqv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_od0vl"]
+bg_color = Color(0.458824, 0.537255, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1nl2e"]
+bg_color = Color(0.777348, 0.417481, 0.385726, 1)
+border_width_left = 2
+border_width_right = 2
+border_color = Color(0.943291, 0.76642, 0.74697, 1)
+expand_margin_left = 2.0
+expand_margin_top = 2.0
+expand_margin_right = 2.0
+expand_margin_bottom = 2.0
+
+[node name="TechnologyPage" type="CanvasLayer"]
+process_mode = 3
+layer = 67
+script = ExtResource("1_gc3v1")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_od0vl")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_constants/h_separation = 20
+columns = 3
+
+[node name="AbilityUpgradeCard" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_sour3")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="AbilityUpgradeCard2" parent="MarginContainer/ScrollContainer/GridContainer" instance=ExtResource("2_sour3")]
+layout_mode = 2
+type = "sword"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 2
+theme_override_constants/margin_top = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 3
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/MarginContainer/HBoxContainer/MarginContainer2"]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+texture = ExtResource("3_1nl2e")
+expand_mode = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 4
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/MarginContainer/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_styles/panel = SubResource("StyleBoxFlat_1nl2e")
+
+[node name="NumLabel" type="Label" parent="MarginContainer/MarginContainer/HBoxContainer/MarginContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 0
+text = "6"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="CloseButton" parent="MarginContainer/MarginContainer/MarginContainer" instance=ExtResource("5_sotqv")]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.247059, 0.14902, 0.192157, 1)
+theme_override_constants/outline_size = 5
+text = "x"
+icon = ExtResource("5_8qg35")
+flat = true
+icon_alignment = 1

@@ -45,6 +45,7 @@ class_name Player
 # 记录时间
 @export var outline_date_time: Dictionary
 @export var accumulate_sceconds: int = 0
+@export var accumulate_experience: int = 0
 
 @export var is_new: bool = true
 
